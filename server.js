@@ -1,9 +1,13 @@
+require('dotenv').config()
+
 const express = require('express')
 const logger = require('morgan')
+
 const app = express()
 const port = 3002
 
 app.use(logger('dev'))
+app.disable('x-powered-by')
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
