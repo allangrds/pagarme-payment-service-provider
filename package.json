@@ -1,0 +1,27 @@
+{
+  "name": "pagarme-payment-service-provider",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "4.17.1",
+    "morgan": "1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "1.19.2"
+  },
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allangrds/pagarme-payment-service-provider.git"
+  },
+  "author": "allangrds",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/allangrds/pagarme-payment-service-provider/issues"
+  },
+  "homepage": "https://github.com/allangrds/pagarme-payment-service-provider#readme"
+}
