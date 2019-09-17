@@ -6,7 +6,7 @@ const cors = require('cors')
 const routes = require('./routes')
 
 const app = express()
-const port = 3002
+const port = process.env.PORT
 
 app.use(logger('dev'))
 app.disable('x-powered-by')
