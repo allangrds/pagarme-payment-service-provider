@@ -10,7 +10,7 @@ services:
       - .:/usr/app
     ports:
       - ${PORT}:${PORT}
-    restart: always
+    restart: on-failure
     depends_on:
       - database
 

@@ -1,11 +1,20 @@
 const { Router } = require('express')
-const { index, show } = require('../controllers/transactions')
+const { index, show, create } = require('../controllers/transactions')
+
+const validator = require('../middlewares/validator')
+const schema = require('../middlewares/validator/transactions')
 
 const router = Router()
 
 router.get(
   '/transactions',
   index
+)
+
+router.post(
+  '/transactions',
+  validator(schema),
+  create
 )
 
 router.get(
