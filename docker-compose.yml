@@ -12,6 +12,8 @@ services:
     ports:
       - ${PORT}:${PORT}
     restart: on-failure
+    links:
+      - database
     depends_on:
       - database
 
