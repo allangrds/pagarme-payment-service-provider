@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 app.use(routes)
 
-app.get('*', function(req, res){
+app.get('*', function(req, res) {
   return res.status(404).json({
     status_code: 404,
     message: 'Not found'

@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { index, show, create } = require('../controllers/transactions')
+const { index, show, create } = require('../app/controllers/transactions')
 
 const validator = require('../middlewares/validator')
 const schema = require('../middlewares/validator/transactions')
