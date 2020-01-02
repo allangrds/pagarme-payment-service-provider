@@ -22,11 +22,12 @@
     "eslint-plugin-import": "2.18.2",
     "mocha": "6.2.0",
     "nodemon": "1.19.2",
+    "nyc": "15.0.0",
     "sequelize-cli": "5.5.1"
   },
   "scripts": {
     "start": "nodemon server.js",
-    "test": "mocha 'test/**/*.js'",
+    "test": "nyc mocha 'test/**/*.js'",
     "docs:generate": "aglio -i docs/src/index.apib --theme-template triple -o docs/build/output.html",
     "docs:preview": "aglio -i docs/src/index.apib --theme-template triple -s --port 3005"
   },
