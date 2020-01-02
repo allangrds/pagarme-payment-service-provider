@@ -1,0 +1,24 @@
+FORMAT: 1A
+HOST: http://localhost:3000
+
+# Pagarme PSP
+
+Documentação da API criada para o teste da Pagar.me.
+
+<!-- include(auth/index.apib) -->
+<!-- include(funds/index.apib) -->
+<!-- include(transactions/index.apib) -->
+<!-- include(users/index.apib) -->
+
+# Data Structures
+
+## Error401 (object)
++ payload (object)
+    + statusCode: 401 (number)
+    + error: Unauthorized (string)
+    + message: Acesso não autorizado (string)
++ header: (object)
+
+## PaymentMethods (enum)
+    + credit_card
+    + debit_card

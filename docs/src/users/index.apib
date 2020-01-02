@@ -1,0 +1,35 @@
+# Group Usuários
+
+# /users
+Representa os usuários do sistema.
+
+## Criar usuário [POST]
+Cria um novo usuário.
+
++ Request JSON Message
+    + Headers
+        Accept: application/json
+    + Attributes
+        + email: email@email.com (string, required)
+        + password: 123456 (string, required)
+
++ Response 201 (application/json)
+    + Attributes
+        + api_key: `1f53a185-d368-4042-8150-56701206e414` (string, required)
+        + created_at: `2019-10-18-10:05:55` (string, required (string, required))
+
+## Obter usuário [GET]
+Obtém os dados de um usuário.
+
++ Request JSON Message
+    + Headers
+        Accept: application/json
+        Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+
++ Response 201 (application/json)
+    + Attributes
+        + api_key: `1f53a185-d368-4042-8150-56701206e414` (string, required)
+        + created_at: `2019-10-18-10:05:55` (string, required (string, required))
+
++ Response 401 (application/json)
+    + Attributes (Error401)
