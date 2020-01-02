@@ -1,0 +1,24 @@
+# Group Autenticação
+
+# /auth
+
+## Autenticar [POST]
+Autentica um usuário e devolve um token JWT.
+
++ Request JSON Message
+    + Headers
+        Accept: application/json
+    + Attributes
+        + email: email@email.com (string, required)
+        + password: 123456 (string, required)
+
++ Response 201 (application/json)
+    + Attributes
+        + type: JWT (string, required)
+        + token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c (string, required)
+        + expires_in: 3600 (number, required)
+
+
++ Response 401 (application/json)
+    + Attributes (Error401)
+

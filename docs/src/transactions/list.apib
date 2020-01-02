@@ -1,0 +1,26 @@
+## Listar transações [GET]
+Devolve as 10 últimas transações criadas pelo usuário.
+
++ Parameters
+    + count: 1 (number, optional) - Quantidade de resultados que deseja obter.
+    + page: 1 (number, optional) - Página dos resultados que deseja obter.
+    + `api_key`: (string, required) - API_KEY do usuário.
+
++ Response 200 (application/json)
+    + Attributes
+        + current_page: (number, required)
+        + per_page: 10 (number, required)
+        + total: 20 (number, required)
+        + results: (array, fixed)
+            + (object)
+                + id: trs_1234 (string, required)
+                + amount: 1000 (number, required)
+                + description: Essa é uma transação (string, required)
+                + payment_method: debit_card (string, required)
+                + last_card_digits: 0569 (string, required)
+                + card_holder_name: João da Silva Sauro (string, required)
+                + card_expiration_date: 0520 (string, required)
+                + created_at: `2019-10-18-10:05:55` (string, required)
+
++ Response 401 (application/json)
+    + Attributes (Error401)

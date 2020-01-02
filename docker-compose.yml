@@ -10,6 +10,7 @@ services:
       - .:/usr/app
       - /usr/app/node_modules
     ports:
+      - "3005:3005"
       - ${PORT}:${PORT}
     restart: on-failure
     links:

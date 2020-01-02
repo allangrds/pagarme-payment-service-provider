@@ -15,6 +15,7 @@
     "uuid": "3.3.3"
   },
   "devDependencies": {
+    "aglio": "2.3.0",
     "chai": "4.2.0",
     "eslint": "6.3.0",
     "eslint-config-pagarme-base": "3.0.0",
@@ -25,7 +26,9 @@
   },
   "scripts": {
     "start": "nodemon server.js",
-    "test": "mocha 'test/**/*.js'"
+    "test": "mocha 'test/**/*.js'",
+    "docs:generate": "aglio -i docs/src/index.apib --theme-template triple -o docs/build/output.html",
+    "docs:preview": "aglio -i docs/src/index.apib --theme-template triple -s --port 3005"
   },
   "repository": {
     "type": "git",
