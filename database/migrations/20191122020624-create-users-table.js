@@ -1,8 +1,8 @@
 const uuidv4 = require('uuid/v4')
 
 module.exports = {
-  up: (queryInterface, DataTypes) => {
-    return queryInterface.createTable('Users', {
+  up: (queryInterface, DataTypes) => (
+    queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -32,10 +32,10 @@ module.exports = {
         allowNull: false,
         type: DataTypes.DATE,
       },
-    });
-  },
+    })
+  ),
 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
-  }
-};
+  down: queryInterface => (
+    queryInterface.dropTable('Users')
+  ),
+}

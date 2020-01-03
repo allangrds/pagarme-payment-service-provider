@@ -16,13 +16,15 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cors())
 app.use(routes)
 
-app.get('*', function(req, res) {
-  return res.status(404).json({
+app.get('*', (req, res) => (
+  res.status(404).json({
     status_code: 404,
-    message: 'Not found'
+    message: 'Not found',
   })
-});
+))
 
-app.use(handleError);
+app.use(handleError)
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => (
+  console.log(`Example app listening on port ${port}!`) // eslint-disable-line no-console
+))

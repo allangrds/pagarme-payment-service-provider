@@ -185,7 +185,7 @@ describe('Middlewares', () => {
           const expectedResult = {
             field: 'payment_date',
             type: 'date.isoDate',
-            message: '"payment_date" must be a valid ISO 8601 date'
+            message: '"payment_date" must be a valid ISO 8601 date',
           }
 
           expect(result).to.be.an('array').to.not.deep.include(expectedResult)
