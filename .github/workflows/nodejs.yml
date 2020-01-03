@@ -1,19 +1,39 @@
 name: Node CI
 
-on:
-  pull_request:
-    branches:
-    - master
+on: ["pull_request"]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
 
+    - name: Use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+
+    - name: npm install, codecoverage
+      run: |
+        npm install
+        npm run test
+        npm run coverage
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel-finished: true
+  build:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [8.x, 10.x, 12.x]
-
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
