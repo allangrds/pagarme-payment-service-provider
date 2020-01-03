@@ -30,7 +30,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "nyc --reporter=html --reporter=text mocha 'test/**/*.js'",
-    "coverage": "ls | nyc report --reporter=lcovonly && cat ./coverage/lcov.info | coveralls",
+    "coverage": "nyc report --reporter=lcovonly && cat ./coverage/lcov.info | coveralls",
     "docs:generate": "aglio -i docs/src/index.apib --theme-template triple -o docs/build/output.html",
     "docs:preview": "aglio -i docs/src/index.apib --theme-template triple -s --port 3005"
   },
