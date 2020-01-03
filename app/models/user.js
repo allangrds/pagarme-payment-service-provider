@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   })
 
   User.beforeCreate(async (user) => {
-    user.password = bcrypt.hashSync(user.password, 10)
+    user.password = bcrypt.hashSync(user.password, 10) // eslint-disable-line no-param-reassign
   })
 
   return User
