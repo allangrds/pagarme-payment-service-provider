@@ -8,6 +8,10 @@ const database = {
     host: 'database',
     dialect: 'mysql',
     operatorsAliases: false,
+    dialectOptions: {
+      useUTC: false,
+    },
+    timezone: '-03:00',
   },
   test: {
     username: process.env.MYSQL_USER,
@@ -16,6 +20,10 @@ const database = {
     host: 'database',
     dialect: 'mysql',
     operatorsAliases: false,
+    dialectOptions: {
+      useUTC: false,
+    },
+    timezone: '-03:00',
   },
   production: {
     username: process.env.MYSQL_USER,
@@ -24,6 +32,10 @@ const database = {
     host: 'database',
     dialect: 'mysql',
     operatorsAliases: false,
+    dialectOptions: {
+      useUTC: false,
+    },
+    timezone: '-03:00',
   },
 }
 
