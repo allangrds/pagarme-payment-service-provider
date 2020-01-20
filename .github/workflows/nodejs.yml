@@ -17,7 +17,6 @@ jobs:
       run: |
         npm install
         npm run lint
-
   test:
     runs-on: ubuntu-latest
     steps:
@@ -28,9 +27,23 @@ jobs:
       with:
         node-version: 10.x
 
+    - name: Shutdown Ubuntu MySQL (SUDO)
+      run: sudo service mysql stop
+
+    - name: Use MySQL 8.0
+      uses: mirromutth/mysql-action@v1.1
+      with:
+        mysql version: '8.0'
+        mysql database: 'psp-database'
+        mysql user: 'user'
+        mysql password: 'password'
+
     - name: npm install, codecoverage
       run: |
+        mv .env.test.example .env
         npm install
+        npm run migrate
+        npm run seed
         npm run test
         npm run coverage
 
@@ -44,21 +57,3 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         parallel-finished: true
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [8.x, 10.x, 12.x]
-    steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
-      run: |
-        npm install
-        npm run build --if-present
-        npm test
-      env:
-        CI: true
