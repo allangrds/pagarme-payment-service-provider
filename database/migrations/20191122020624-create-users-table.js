@@ -1,5 +1,3 @@
-const uuidv4 = require('uuid/v4')
-
 module.exports = {
   up: (queryInterface, DataTypes) => (
     queryInterface.createTable('Users', {
@@ -11,9 +9,8 @@ module.exports = {
       },
       api_key: {
         allowNull: false,
-        primaryKey: true,
         type: DataTypes.UUID,
-        defaultValue: uuidv4(),
+        unique: true,
       },
       email: {
         allowNull: false,
