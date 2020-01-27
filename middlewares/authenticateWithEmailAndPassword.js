@@ -13,7 +13,7 @@ const returnUnauthorized = res => (
 const authenticateWithEmailAndPassword = async (req, res, next) => {
   const { email, password } = req.query
 
-  if (!email && !password) {
+  if (!email || !password) {
     return returnUnauthorized(res)
   }
 
