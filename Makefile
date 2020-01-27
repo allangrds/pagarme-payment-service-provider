@@ -9,6 +9,9 @@ kill:
 up:
 	@docker-compose up
 
+up-silent:
+	@docker-compose up -d
+
 bash:
 	@docker exec -it api /bin/ash
 
