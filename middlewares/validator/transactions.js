@@ -31,7 +31,7 @@ const schema = Joi.object({
       .max(4)
       .regex(/^[0-9]+$/)
       .required(),
-    cvv: Joi
+    card_cvv: Joi
       .string()
       .min(3)
       .max(3)

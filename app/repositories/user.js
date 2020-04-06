@@ -10,13 +10,14 @@ const userRepository = {
 
     return baseRepository.create(User, attributes, values)
   },
-  findOne: (where) => {
-    const attributes = [
+  findOne: (where, attributes) => {
+    const defaultAttributes = [
       'email',
       'api_key',
     ]
+    const selectedAttributes = attributes || defaultAttributes
 
-    return baseRepository.findOne(User, attributes, where)
+    return baseRepository.findOne(User, selectedAttributes, where)
   },
 }
 
