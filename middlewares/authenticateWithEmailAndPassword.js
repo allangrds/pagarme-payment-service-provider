@@ -1,40 +1,42 @@
 const bcrypt = require('bcryptjs')
 
+const UnauthorizedError = require('../helpers/errors/unauthorizedError')
 const { User } = require('../app/models')
 
-const returnUnauthorized = res => (
-  res.status(401).json({
-    status_code: 401,
-    error: 'Unauthorized',
-    message: 'Access denied',
-  })
-)
-
 const authenticateWithEmailAndPassword = async (req, res, next) => {
-  const { email, password } = req.query
+  try {
+    const { email, password } = req.query
 
-  if (!email || !password) {
-    return returnUnauthorized(res)
+    if (!email || !password) {
+      throw new UnauthorizedError()
+    }
+
+    const userExists = await User.findOne({
+      where: {
+        email,
+      },
+    }, ['id', 'password'])
+
+    if (!userExists) {
+      throw new UnauthorizedError()
+    }
+
+    const {
+      id: userId,
+      password: savedPassword,
+    } = userExists.dataValues
+    const matchPassword = bcrypt.compareSync(password, savedPassword)
+
+    if (!matchPassword) {
+      throw new UnauthorizedError()
+    }
+
+    req.body.user_id = userId
+
+    return next()
+  } catch(error) {
+    next(error)
   }
-
-  const userExists = await User.findOne({
-    where: {
-      email,
-    },
-  })
-
-  if (!userExists) {
-    return returnUnauthorized(res)
-  }
-
-  const { password: savedPassword } = userExists.dataValues
-  const matchPassword = bcrypt.compareSync(password, savedPassword)
-
-  if (!matchPassword) {
-    return returnUnauthorized(res)
-  }
-
-  return next()
 }
 
 module.exports = authenticateWithEmailAndPassword
