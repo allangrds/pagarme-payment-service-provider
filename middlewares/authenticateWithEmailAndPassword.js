@@ -34,9 +34,11 @@ const authenticateWithEmailAndPassword = async (req, res, next) => {
     req.body.user_id = userId
 
     return next()
-  } catch(error) {
+  } catch (error) {
     next(error)
   }
+
+  return null
 }
 
 module.exports = authenticateWithEmailAndPassword

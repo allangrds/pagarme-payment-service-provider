@@ -24,13 +24,15 @@ describe('Middlewares', () => {
           },
         }
         const res = httpMocks.createResponse()
-        const next = () => ({})
+        const next = (error) => {
+          validationResponse = error
+        }
 
-        validationResponse = await authenticateWithApiKey(req, res, next)
+        await authenticateWithApiKey(req, res, next)
       })
 
-      it('should not have "401" as statusCode', () => {
-        expect(validationResponse.statusCode).to.not.equal(401)
+      it('should not have any error content', () => {
+        expect(validationResponse).to.equal(undefined)
       })
     })
     describe('When fails', () => {

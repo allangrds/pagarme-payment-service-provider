@@ -74,20 +74,21 @@ describe('Middlewares', () => {
           password,
         })
         const req = {
+          body: {},
           query: {
             email: user2.email,
             password,
           },
         }
         const res = httpMocks.createResponse()
-        const next = () => null
+        const next = (error) => {
+          validationResponse = error
+        }
 
-        validationResponse = (
-          await authenticateWithEmailAndPassword(req, res, next)
-        )
+        await authenticateWithEmailAndPassword(req, res, next)
       })
 
-      it('should not have "401" as statusCode', () => {
+      it('should not have any error content', () => {
         expect(validationResponse).to.equal(undefined)
       })
     })
