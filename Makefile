@@ -21,3 +21,6 @@ migrate:
 
 seed:
 	@docker exec -it api npx sequelize-cli db:seed:all
+
+test:
+	@docker exec -it api npm run test
