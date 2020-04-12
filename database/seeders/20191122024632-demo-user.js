@@ -7,8 +7,8 @@ module.exports = {
       api_key: uuidv4('123'),
       email: 'usuario@email.com',
       password: bcrypt.hashSync('123', 10),
-      createdAt: new Date(),
-      updatedAt: new Date(),
+      created_at: new Date(),
+      updated_at: new Date(),
     }], {})
   ),
 

@@ -10,7 +10,7 @@ services:
       - .:/usr/app
       - /usr/app/node_modules
     ports:
-      - "3005:3005"
+      - "3006:3006"
       - ${PORT}:${PORT}
     restart: on-failure
     links:
@@ -29,3 +29,4 @@ services:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}

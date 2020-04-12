@@ -412,14 +412,14 @@ describe('Middlewares', () => {
             expect(result).to.be.an('array').to.not.deep.include(expectedResult)
           })
         })
-        describe('cvv', () => {
+        describe('card_cvv', () => {
           it('should show "required" message', () => {
             const result = validateData(schema, { body: {} })
 
             const expectedResult = {
-              field: 'cvv',
+              field: 'card_cvv',
               type: 'any.required',
-              message: '"cvv" is required',
+              message: '"card_cvv" is required',
             }
 
             expect(result).to.be.an('array').to.deep.include(expectedResult)
@@ -427,14 +427,14 @@ describe('Middlewares', () => {
           it('should show "min" message', () => {
             const result = validateData(schema, {
               body: {
-                cvv: String().padStart(2, '1'),
+                card_cvv: String().padStart(2, '1'),
               },
             })
 
             const expectedResult = {
-              field: 'cvv',
+              field: 'card_cvv',
               type: 'string.min',
-              message: '"cvv" length must be at least 3 characters long',
+              message: '"card_cvv" length must be at least 3 characters long',
             }
 
             expect(result).to.be.an('array').to.deep.include(expectedResult)
@@ -442,14 +442,14 @@ describe('Middlewares', () => {
           it('should show "max" message', () => {
             const result = validateData(schema, {
               body: {
-                cvv: String().padStart(4, '1'),
+                card_cvv: String().padStart(4, '1'),
               },
             })
 
             const expectedResult = {
-              field: 'cvv',
+              field: 'card_cvv',
               type: 'string.max',
-              message: '"cvv" length must be less than or equal to 3 characters long',
+              message: '"card_cvv" length must be less than or equal to 3 characters long',
             }
 
             expect(result).to.be.an('array').to.deep.include(expectedResult)
@@ -457,14 +457,14 @@ describe('Middlewares', () => {
           it('should show "string" message', () => {
             const result = validateData(schema, {
               body: {
-                cvv: 1,
+                card_cvv: 1,
               },
             })
 
             const expectedResult = {
-              field: 'cvv',
+              field: 'card_cvv',
               type: 'string.base',
-              message: '"cvv" must be a string',
+              message: '"card_cvv" must be a string',
             }
 
             expect(result).to.be.an('array').to.deep.include(expectedResult)
@@ -472,14 +472,14 @@ describe('Middlewares', () => {
           it('should show "string" using numbers message', () => {
             const result = validateData(schema, {
               body: {
-                cvv: String().padStart(14, 'a'),
+                card_cvv: String().padStart(14, 'a'),
               },
             })
 
             const expectedResult = {
-              field: 'cvv',
+              field: 'card_cvv',
               type: 'string.regex.base',
-              message: `"cvv" with value "${String().padStart(14, 'a')}" fails to match the required pattern: /^[0-9]+$/`,
+              message: `"card_cvv" with value "${String().padStart(14, 'a')}" fails to match the required pattern: /^[0-9]+$/`,
             }
 
             expect(result).to.be.an('array').to.deep.include(expectedResult)
@@ -487,12 +487,12 @@ describe('Middlewares', () => {
           it('should not show any message', () => {
             const result = validateData(schema, {
               body: {
-                cvv: '123',
+                card_cvv: '123',
               },
             })
 
             const expectedResult = {
-              field: 'cvv',
+              field: 'card_cvv',
             }
 
             expect(result).to.be.an('array').to.not.deep.include(expectedResult)
@@ -507,7 +507,7 @@ describe('Middlewares', () => {
           card_number: '4142523315089880',
           card_holder_name: 'Joao',
           card_expiration_date: '0921',
-          cvv: '123',
+          card_cvv: '123',
         }
         const result = validateData(schema, { body: payload })
         const expectedResult = null

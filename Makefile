@@ -1,4 +1,5 @@
 bootstrap: down kill up
+bootstrap-silent: down kill up-silent
 
 down:
 	@docker-compose down

@@ -1,21 +1,23 @@
-const bcrypt = require('bcryptjs')
+const { path } = require('ramda')
 
 const UnauthorizedError = require('../helpers/errors/unauthorizedError')
 const { User } = require('../app/models')
 
-const authenticateWithEmailAndPassword = async (req, res, next) => {
+const authenticateWithApiKey = async (req, res, next) => {
   try {
-    const { email, password } = req.query
+    const apiKeyFromBody = path(['body', 'api_key'], req)
+    const apiKeyFromQuery = path(['query', 'api_key'], req)
+    const apiKey = apiKeyFromBody || apiKeyFromQuery
 
-    if (!email || !password) {
+    if (!apiKey) {
       throw new UnauthorizedError()
     }
 
     const userExists = await User.findOne({
       where: {
-        email,
+        api_key: apiKey,
       },
-    }, ['id', 'password'])
+    }, ['id'])
 
     if (!userExists) {
       throw new UnauthorizedError()
@@ -23,13 +25,7 @@ const authenticateWithEmailAndPassword = async (req, res, next) => {
 
     const {
       id: userId,
-      password: savedPassword,
     } = userExists.dataValues
-    const matchPassword = bcrypt.compareSync(password, savedPassword)
-
-    if (!matchPassword) {
-      throw new UnauthorizedError()
-    }
 
     req.body.user_id = userId
 
@@ -41,4 +37,4 @@ const authenticateWithEmailAndPassword = async (req, res, next) => {
   return null
 }
 
-module.exports = authenticateWithEmailAndPassword
+module.exports = authenticateWithApiKey
