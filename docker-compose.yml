@@ -1,4 +1,8 @@
 version: "3"
+
+networks:
+  project-network:
+
 services:
   api:
     container_name: "api"
@@ -17,6 +21,8 @@ services:
       - database
     depends_on:
       - database
+    networks:
+      - project-network
 
   database:
     image: mysql:8.0
@@ -30,3 +36,5 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    networks:
+      - project-network
