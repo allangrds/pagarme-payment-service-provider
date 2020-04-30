@@ -1,5 +1,5 @@
 const { Transaction } = require('../repositories')
-const TransactionsService = require('../services/transactions')
+const transactionsService = require('../services/transactions')
 
 const index = async (req, res) => {
   const { page } = req.query
@@ -14,9 +14,9 @@ const index = async (req, res) => {
 }
 
 const create = async (req, res) => {
-  const createdUser = await TransactionsService(req)
+  const createdTransaction = await transactionsService.create(req)
 
-  return res.status(201).json(createdUser)
+  return res.status(201).json(createdTransaction)
 }
 
 module.exports = { index, create }

@@ -20,8 +20,10 @@ module.exports = (sequelize, DataTypes) => {
 
   const Transaction = sequelize.define('Transaction', {
     id: {
-      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
       primaryKey: true,
+      type: DataTypes.INTEGER,
     },
     user_id: {
       allowNull: false,

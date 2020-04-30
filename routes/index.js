@@ -1,11 +1,11 @@
 const { Router } = require('express')
 const transactionsRouter = require('./transactions')
-const payablesRouter = require('./payables')
+const resumeRouter = require('./resume')
 const usersRouter = require('./users')
 
 const router = Router()
 
-router.use(payablesRouter)
+router.use(resumeRouter)
 router.use(usersRouter)
 router.use(transactionsRouter)
 

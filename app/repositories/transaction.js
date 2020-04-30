@@ -5,6 +5,7 @@ const transactionRepository = {
   create: (values) => {
     const attributes = [
       'id',
+      'transaction_id',
       'amount',
       'description',
       'payment_method',
@@ -13,8 +14,6 @@ const transactionRepository = {
       'card_expiration_date',
       'created_at',
     ]
-
-    console.log('attributes - ', attributes)
 
     return baseRepository.create(Transaction, attributes, values)
   },
