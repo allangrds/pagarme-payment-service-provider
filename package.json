@@ -18,7 +18,8 @@
     "mysql2": "2.0.1",
     "ramda": "0.27.0",
     "sequelize": "5.21.2",
-    "uuid": "3.3.3"
+    "uuid": "3.3.3",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "aglio": "2.3.0",
@@ -43,7 +44,9 @@
     "start": "nodemon server.js",
     "test": "nyc --reporter=html --reporter=text mocha 'test/**/*.js'",
     "migrate": "npx sequelize db:migrate",
-    "seed": "npx sequelize-cli db:seed:all"
+    "seed": "npx sequelize-cli db:seed:all",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -54,5 +57,6 @@
   "bugs": {
     "url": "https://github.com/allangrds/pagarme-payment-service-provider/issues"
   },
-  "homepage": "https://github.com/allangrds/pagarme-payment-service-provider#readme"
+  "homepage": "https://github.com/allangrds/pagarme-payment-service-provider#readme",
+  "snyk": true
 }
